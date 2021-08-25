@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>web worker</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 20px;
+    }
+
+    p {
+        border: 1px solid #c3c3c3;
+        height: 10px;
+        width: 10px;
+        margin: 5px;
+        display: inline-block;
+        background-color: #7dc5f5;
+    }
+    </style>
+</head>
+<body>
+<h1>Canvas离屏渲染</h1>
+<hr>
+<br>
+<div>
+    <button id="btn">添加dom</button>
+    <button id="draw">同步绘制</button>
+    <button id="wk">worker绘制</button>
+</div>
+<br>
+<hr>
+<div id="block"></div>
+<br>
+<div>
+    <canvas id="myCanvas"></canvas>
+</div>
+</body>
+<script src="main.js"></script>
+
+</html>

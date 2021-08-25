@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>web worker</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        padding: 20px;
+    }
+    </style>
+</head>
+<body>
+<h1>web worker</h1>
+<hr>
+<br>
+<button id="btn">给myWorker发消息</button>
+<button id="close">关闭myWorker</button>
+</body>
+</html>
+<script>
+window.onload = function () {
+  const myWorker = new Worker('./myworker.js')
+  myWorker.onmessage = function (e) {
+    console.log(e.data)
+  }
+  myWorker.addEventListener('error', function (e) {
+    console.log(e.message);
+  });
+
+  const btn = document.getElementById('btn')
+  btn.onclick = function () {
+    myWorker.postMessage({type: 'main', msg: '我是主线程'})
+  }
+
+  const cBtn = document.getElementById('close')
+  cBtn.onclick = function () {
+    myWorker.terminate()
+  }
+}
+</script>
